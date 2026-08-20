@@ -102,6 +102,7 @@
   --coffee: oklch(0.35 0.06 55);
   --cream: oklch(0.96 0.015 85);
   --amber-glow: oklch(0.72 0.15 65);
+  --whatsapp: oklch(0.64 0.18 145);
 }
 
 .dark {
