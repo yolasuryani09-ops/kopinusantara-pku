@@ -463,7 +463,7 @@ function LocationSection() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-green-600 text-white transition-colors hover:bg-green-700"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-whatsapp text-white transition-colors hover:bg-whatsapp/90"
                 aria-label="WhatsApp Kopi Nusantara"
               >
                 <MessageCircle className="h-5 w-5" />
