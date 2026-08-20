@@ -141,6 +141,7 @@
   --coffee: oklch(0.55 0.08 60);
   --cream: oklch(0.25 0.03 60);
   --amber-glow: oklch(0.75 0.14 65);
+  --whatsapp: oklch(0.58 0.16 145);
 }
 
 @layer base {
