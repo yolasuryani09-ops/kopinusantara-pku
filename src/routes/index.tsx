@@ -10,6 +10,13 @@ import {
   ChevronDown,
   UtensilsCrossed,
   Star,
+  Wifi,
+  Wind,
+  Zap,
+  Music,
+  Car,
+  Users,
+  Heart,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -31,6 +38,11 @@ import {
 import esKopiImage from "@/assets/es-kopi-gula-aren.jpg";
 import manualBrewImage from "@/assets/manual-brew-gayo.jpg";
 import rotiBakarImage from "@/assets/roti-bakar-kaya.jpg";
+import kopiSusuImage from "@/assets/kopi-susu-nusantara.jpg";
+import matchaLatteImage from "@/assets/matcha-latte.jpg";
+import croissantKejuImage from "@/assets/croissant-keju.jpg";
+import pisangGorengImage from "@/assets/pisang-goreng-crispy.jpg";
+import tehTarikImage from "@/assets/teh-tarik.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -42,13 +54,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Nikmati seduhan biji kopi terbaik Nusantara di Kopi Nusantara. Pesan langsung dari meja Anda via WhatsApp.",
+          "Nikmati seduhan biji kopi terbaik Nusantara di Kopi Nusantara, Taman Karya Pekanbaru. Pesan langsung dari meja Anda via WhatsApp.",
       },
       { property: "og:title", content: "Kopi Nusantara - Cita Rasa Asli Indonesia" },
       {
         property: "og:description",
         content:
-          "Nikmati seduhan biji kopi terbaik Nusantara di Kopi Nusantara. Pesan langsung dari meja Anda via WhatsApp.",
+          "Nikmati seduhan biji kopi terbaik Nusantara di Kopi Nusantara, Taman Karya Pekanbaru. Pesan langsung dari meja Anda via WhatsApp.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -57,6 +69,7 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP_NUMBER = "6281234567890";
+const INSTAGRAM_HANDLE = "sryn89_";
 
 const MENU_ITEMS = [
   {
@@ -86,6 +99,51 @@ const MENU_ITEMS = [
     image: rotiBakarImage,
     alt: "Roti bakar dengan selai kaya dan mentega",
   },
+  {
+    id: 4,
+    name: "Kopi Susu Nusantara",
+    description:
+      "Perpaduan espresso khas Nusantara dan susu segar yang creamy dan halus.",
+    price: "Rp 20.000",
+    image: kopiSusuImage,
+    alt: "Gelas Kopi Susu Nusantara dengan lapisan susu dan espresso",
+  },
+  {
+    id: 5,
+    name: "Matcha Latte",
+    description:
+      "Matcha Jepang premium yang creamy dengan susu segar dan sedikit madu.",
+    price: "Rp 24.000",
+    image: matchaLatteImage,
+    alt: "Gelas Matcha Latte berwarna hijau dengan foam di atasnya",
+  },
+  {
+    id: 6,
+    name: "Croissant Keju",
+    description:
+      "Croissant renyah luar, lembut dalam, dengan isian keju meleleh gurih.",
+    price: "Rp 17.000",
+    image: croissantKejuImage,
+    alt: "Croissant keju gurih dengan isian keju meleleh",
+  },
+  {
+    id: 7,
+    name: "Pisang Goreng Crispy",
+    description:
+      "Pisang tanduk goreng tepung renyah, taburan gula halus, cocok untuk ngopi.",
+    price: "Rp 14.000",
+    image: pisangGorengImage,
+    alt: "Piring pisang goreng crispy dengan taburan gula halus",
+  },
+  {
+    id: 8,
+    name: "Teh Tarik",
+    description:
+      "Teh susu khas Melayu yang ditarik sempurna, hangat dan beraroma rempah.",
+    price: "Rp 16.000",
+    image: tehTarikImage,
+    alt: "Gelas Teh Tarik hangat dengan foam di atasnya",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -101,6 +159,57 @@ const TESTIMONIALS = [
       "Es Kopi Gula Aren terbaik di kota ini, rasanya pas dan nggak kemanisan.",
     author: "Rina M.",
   },
+  {
+    id: 3,
+    quote:
+      "Sering kesini bareng teman. WiFi kencang, colokan banyak, dan kopinya enak.",
+    author: "Andi K.",
+  },
+  {
+    id: 4,
+    quote:
+      "Pesen dari meja via WhatsApp sangat praktis. Pelayanannya juga ramah dan cepat.",
+    author: "Sari L.",
+  },
+];
+
+const FACILITIES = [
+  {
+    id: 1,
+    icon: Wifi,
+    title: "WiFi Gratis",
+    description: "Koneksi internet cepat untuk kerja atau bersantai.",
+  },
+  {
+    id: 2,
+    icon: Wind,
+    title: "Area Merokok & Bebas Rokok",
+    description: "Zona nyaman untuk perokok maupun non-perokok.",
+  },
+  {
+    id: 3,
+    icon: Zap,
+    title: "Colokan di Setiap Meja",
+    description: "Jangan khawatir baterai habis saat bekerja.",
+  },
+  {
+    id: 4,
+    icon: Music,
+    title: "AC & Musik Santai",
+    description: "Suasana dingin dengan playlist yang menenangkan.",
+  },
+  {
+    id: 5,
+    icon: Car,
+    title: "Parkir Luas",
+    description: "Area parkir mobil dan motor yang luas dan aman.",
+  },
+  {
+    id: 6,
+    icon: Users,
+    title: "Ruang Meeting Kecil",
+    description: "Tersedia ruang diskusi untuk 6-8 orang (reservasi).",
+  },
 ];
 
 function buildOrderUrl(tableNumber: string) {
@@ -115,7 +224,9 @@ function Navbar() {
 
   const navLinks = [
     { href: "#beranda", label: "Beranda" },
+    { href: "#tentang", label: "Tentang" },
     { href: "#menu", label: "Menu" },
+    { href: "#fasilitas", label: "Fasilitas" },
     { href: "#pesan", label: "Pesan Meja" },
     { href: "#testimoni", label: "Testimoni" },
     { href: "#lokasi", label: "Lokasi" },
@@ -216,8 +327,8 @@ function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.55_0.1_65/0.25),transparent_50%)]" />
       <div className="relative mx-auto max-w-4xl">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-glow/30 bg-amber-glow/10 px-4 py-1.5 text-sm text-amber-glow">
-          <Coffee className="h-4 w-4" />
-          <span>Dari Aceh hingga Papua</span>
+          <Heart className="h-4 w-4" />
+          <span>Kopi Nikmat Hati Senang</span>
         </div>
         <h1 className="text-4xl font-extrabold leading-tight text-amber-glow md:text-6xl">
           Nikmati Seduhan Biji Kopi Terbaik Nusantara
@@ -254,56 +365,146 @@ function HeroSection() {
   );
 }
 
+function AboutSection() {
+  return (
+    <section id="tentang" className="mx-auto max-w-6xl px-4 py-20">
+      <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="order-2 lg:order-1">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary">
+            <Coffee className="h-4 w-4" />
+            <span>Tentang Kopi Nusantara</span>
+          </div>
+          <h2 className="text-3xl font-bold text-coffee md:text-4xl">
+            Menghadirkan Cita Rasa Kopi Lokal ke Setiap Meja
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Kopi Nusantara hadir dari kecintaan kami terhadap biji kopi Indonesia.
+            Kami menyajikan biji pilihan dari berbagai daerah, diseduh dengan
+            teknik terbaik oleh barista berpengalaman.
+          </p>
+          <p className="mt-4 text-muted-foreground">
+            Di Taman Karya, Pekanbaru, kami ingin menciptakan ruang ngopi yang
+            nyaman untuk semua: mahasiswa, pekerja remote, keluarga, dan
+            komunitas. Karena setiap cangkir yang kami sajikan bermakna.
+          </p>
+          <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+            <div className="rounded-xl bg-secondary/50 p-4">
+              <p className="text-2xl font-bold text-primary">8+</p>
+              <p className="text-sm text-muted-foreground">Varian Kopi</p>
+            </div>
+            <div className="rounded-xl bg-secondary/50 p-4">
+              <p className="text-2xl font-bold text-primary">20</p>
+              <p className="text-sm text-muted-foreground">Meja Tersedia</p>
+            </div>
+            <div className="rounded-xl bg-secondary/50 p-4">
+              <p className="text-2xl font-bold text-primary">4.8</p>
+              <p className="text-sm text-muted-foreground">Rating Pelanggan</p>
+            </div>
+          </div>
+        </div>
+        <div className="order-1 lg:order-2">
+          <div className="relative aspect-square overflow-hidden rounded-2xl border border-border bg-muted shadow-xl">
+            <img
+              src={manualBrewImage}
+              alt="Barista menyeduh manual brew kopi Nusantara"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MenuSection() {
   return (
-    <section id="menu" className="mx-auto max-w-6xl px-4 py-20">
+    <section id="menu" className="bg-secondary/30 px-4 py-20">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold text-coffee md:text-4xl">Menu Favorit</h2>
+          <p className="mt-3 text-muted-foreground">
+            Pilihan terbaik yang disajikan oleh barista kami setiap hari.
+          </p>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {MENU_ITEMS.map((item) => (
+            <Card
+              key={item.id}
+              className="overflow-hidden border-border bg-card transition-shadow hover:shadow-lg"
+            >
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl text-coffee">{item.name}</CardTitle>
+                <CardDescription className="text-muted-foreground">
+                  {item.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex items-center justify-between pt-0">
+                <span className="text-lg font-bold text-primary">{item.price}</span>
+                <Button
+                  asChild
+                  size="sm"
+                  className="gap-1 bg-coffee text-cream hover:bg-coffee/90"
+                >
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                      `Halo Kopi Nusantara, saya mau pesan ${item.name}`,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Pesan
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FacilitiesSection() {
+  return (
+    <section id="fasilitas" className="mx-auto max-w-6xl px-4 py-20">
       <div className="mb-12 text-center">
-        <h2 className="text-3xl font-bold text-coffee md:text-4xl">Menu Favorit</h2>
+        <h2 className="text-3xl font-bold text-coffee md:text-4xl">Fasilitas Kami</h2>
         <p className="mt-3 text-muted-foreground">
-          Pilihan terbaik yang disajikan oleh barista kami setiap hari.
+          Kenyamanan pelanggan adalah prioritas utama Kopi Nusantara.
         </p>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {MENU_ITEMS.map((item) => (
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {FACILITIES.map((facility) => (
           <Card
-            key={item.id}
-            className="overflow-hidden border-border bg-card transition-shadow hover:shadow-lg"
+            key={facility.id}
+            className="border-border bg-card transition-shadow hover:shadow-md"
           >
-            <div className="aspect-[4/3] w-full overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.alt}
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-            <CardHeader>
-              <CardTitle className="text-xl text-coffee">{item.name}</CardTitle>
-              <CardDescription className="text-muted-foreground">
-                {item.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex items-center justify-between pt-0">
-              <span className="text-lg font-bold text-primary">{item.price}</span>
-              <Button
-                asChild
-                size="sm"
-                className="gap-1 bg-coffee text-cream hover:bg-coffee/90"
-              >
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                    `Halo Kopi Nusantara, saya mau pesan ${item.name}`,
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Pesan
-                </a>
-              </Button>
+            <CardContent className="flex items-start gap-4 p-6">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <facility.icon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-coffee">{facility.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {facility.description}
+                </p>
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -372,13 +573,13 @@ function TestimonialsSection() {
   return (
     <section id="testimoni" className="mx-auto max-w-6xl px-4 py-20">
       <div className="mb-12 text-center">
-        <h2 className="text-3xl font-bold text-coffee md:text-4xl">Kata Mereka</h2>
+        <h2 className="text-3xl font-bold text-coffee md:text-4xl">Testimoni</h2>
         <p className="mt-3 text-muted-foreground">
           Apa yang pelanggan katakan tentang Kopi Nusantara.
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {TESTIMONIALS.map((item) => (
           <Card
             key={item.id}
@@ -422,7 +623,7 @@ function LocationSection() {
               <div>
                 <h3 className="font-semibold text-coffee">Alamat</h3>
                 <p className="mt-1 text-muted-foreground">
-                  Jl. Nusantara No. 45, Kebayoran, Jakarta Selatan
+                  Taman Karya, Pekanbaru, Riau
                 </p>
               </div>
             </div>
@@ -451,7 +652,7 @@ function LocationSection() {
 
             <div className="flex items-center gap-4 pt-2">
               <a
-                href="https://instagram.com"
+                href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-muted text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
@@ -474,7 +675,7 @@ function LocationSection() {
           <div className="overflow-hidden rounded-2xl border border-border bg-muted shadow-inner">
             <iframe
               title="Lokasi Kopi Nusantara"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28258282365!2d106.759478!3d-6.229728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%20South%2C%20South%20Jakarta%0A%20City%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.9999999999995!2d101.45!3d0.5333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMzEnNTkuOCJOIDEwMcKwMjcnMDIuMCJF!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid"
               className="h-80 w-full border-0 md:h-96"
               allowFullScreen
               loading="lazy"
@@ -512,7 +713,9 @@ function Index() {
       <Navbar />
       <main>
         <HeroSection />
+        <AboutSection />
         <MenuSection />
+        <FacilitiesSection />
         <TableOrderSection />
         <TestimonialsSection />
         <LocationSection />
